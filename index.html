@@ -22,34 +22,39 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&family=Open+Sans:wght@400;600;800&display=swap"
             rel="stylesheet">
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <title>ProNabowy</title>
     </head>
 <body>
     <!-- Start Header -->
-        <header>
-            <div class="container">
-                <div class="logo">
-                    <i class="fas fa-heart"></i>
-                    <h3>ProNabowy</h3>
-                </div>
-                <div class="list">
-                    <ul>
-                        <li><a href="https://www.facebook.com/elngmadle/" target="_blank">Product</a></li>
-                        <li><a href="https://www.facebook.com/elngmadle/" target="_blank">Cases</a></li>
-                        <li><a href="https://www.facebook.com/elngmadle/" target="_blank">Resources</a></li>
-                        <li><a href="https://www.facebook.com/elngmadle/" target="_blank">Pricing</a></li>
-                        <li><a href="https://www.youtube.com/channel/UCMNQVnQ2z-qfIpNiKhfMHgw" target="_blank">Blog</a></li>
-                    </ul>
-                </div>
-                <form action="">
-                    <label for="">Log in</label>
-                    <input type="submit" value="Sign up Free">
-                </form>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <h3>ProNabowy</h3>
             </div>
-        </header>
+            <label>
+                <input type="checkbox">
+                <ion-icon name="menu-outline"></ion-icon>
+            <div class="links">
+                <ul>
+                    <li><a href="#Product">Product</a></li>
+                    <li><a href="#Cases">Cases</a></li>
+                    <li><a href="#Resources">Resources</a></li>
+                    <li><a href="#Pricing">Pricing</a></li>
+                    <li><a href="#Blog">Blog</a></li>
+                </ul>
+            </div>
+    </label>
+    <form action="https://www.facebook.com/elngmadle/" target="_blank">
+        <label for="">Log in</label>
+        <input type="submit" value="Sign up Free">
+    </form>
+    </header>
     <!-- End Header -->
     <!-- Start Contact  -->
-        <div class="Contact">
+        <div class="Contact" id="Product">
             <div class="container">
                 <h4><a href="https://www.facebook.com/elngmadle/"><span>New</span>Check If your site passes Core Web Vitals</a></h4>
                 <div class="text">
@@ -64,7 +69,7 @@
         </div>
     <!-- End Contact  -->
     <!-- Start Section -->
-        <div class="Section">
+        <div class="Section" id="Resources">
             <div class="container">
                 <div class="imge">
                     <img src="./Photos/frist one.PNG" alt="">
@@ -75,7 +80,7 @@
         </div>
     <!-- End Section -->
     <!-- Start performance -->
-        <div class="performance">
+        <div class="performance" id="Blog">
             <div class="container">
                 <div class="text">
                     <h2>All-in-one web performance monitoring for professional teams</h2>
@@ -119,7 +124,7 @@
         </div>
     <!-- End performance -->
     <!-- Strat Speed  -->
-        <div class="Speed">
+        <div class="Speed" id="Cases">
             <div class="container">
                 <div class="text">
                     <h2>Everything you need to understand page speed</h2>
@@ -143,7 +148,7 @@
         </div>
     <!-- End Speed  -->
     <!-- Start Reports -->
-    <div class="Reports">
+    <div class="Reports" id="Pricing">
         <div class="container">
             <div class="imge">
                 <img src="./Photos/time.PNG" alt="">
@@ -160,7 +165,7 @@
     </div>
     <!-- End Reports -->
     <!-- Start party -->
-    <div class="party">
+    <div class="party" id="Blog">
         <div class="container">
             <div class="text">
                 <div class="contact-of-text">
@@ -193,7 +198,7 @@
     </div>
     <!-- End Theams -->
     <!-- Start people -->
-        <div class="people">
+        <div class="people" id="Cases">
             <h2>Why People Love Calibre</h2>
             <div class="container">
                 <div class="box">
@@ -260,7 +265,7 @@
         </div>
     <!-- End people -->
     <!-- Start monitoring  -->
-        <div class="monitoring">
+        <div class="monitoring" id="Blog">
             <div class="container">
                 <h1>Page speed monitoring shouldn’t be complicated</h1>
                 <div class="text">
@@ -280,7 +285,7 @@
         </div>
     <!-- End monitoring  -->
     <!-- Start results -->
-    <div class="Results">
+    <div class="Results" id="Resources">
         <div class="container">
             <div class="text">
                 <h2>Get your first results
@@ -296,7 +301,7 @@
     </div>
     <!-- End results -->
     <!-- Start Tools  -->
-    <div class="Tools">
+    <div class="Tools" id="Pricing">
         <h2><i class="fas fa-heart" aria-hidden="true"></i> Tools for companies who win at site speed</h2>
             <div class="parent-of-boxs">
                 <div class="box">

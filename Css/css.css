@@ -54,7 +54,150 @@ header {
   z-index: 999999999999999;
   padding: 10px 0;
 }
+header .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+header .container label input,
+header .container label ion-icon {
+  display: none;
+}
+header .container > label {
+  flex-basis: 55%;
+}
+header .container .logo {
+  display: flex;
+  align-items: center;
+}
+header .container .logo i {
+  font-size: 25px;
+  color: var(--main-color);
+}
+header .container .logo h3 {
+  color: black;
+  font-size: 30px;
+}
+header .container .logo p {
+  font-size: 12px;
+  color: black;
+}
+header .container .links {
+  height: 100%;
+}
+header .container .links ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+header .container .links ul li a {
+  font-weight: bolder;
+  color: var(--main-color);
+  transition: var(--main-transation);
+  position: relative;
+}
+header .container .links ul li a:hover {
+  color: var(--section-background);
+}
+header .container .links ul li a::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  transition: 0.5s;
+}
+header .container .links ul li a:hover::after {
+  width: calc(100% + 10px);
+}
+header form {
+  display: flex;
+  align-items: center;
+}
+header form label {
+  margin-right: 20px;
+  font-weight: normal;
+  font-size: 20px;
+}
+header form input {
+  background-color: var(--main-color);
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+}
 
+@media (max-width: 991px) {
+  header .container .logo {
+    padding-left: 20px;
+  }
+  header .container label input,
+  header .container label ion-icon {
+    display: block;
+    padding-right: 20px;
+  }
+  header .container label ion-icon {
+    font-size: 45px;
+    color: black;
+    cursor: pointer;
+  }
+  header .container > label {
+    flex-basis: initial;
+    order: 7;
+  }
+  header .container label input {
+    appearance: none;
+  }
+  header .container .links {
+    position: absolute;
+    left: -200%;
+    top: 75px;
+    width: 100%;
+    height: calc(100vh - 75px);
+    background-color: #ccc;
+    transition: 0.8s;
+    z-index: 99999999999;
+  }
+  header .container .links ul li a {
+    color: white;
+  }
+  header .container .links ul {
+    flex-direction: column;
+    text-align: center;
+    justify-content: initial;
+    padding: 50px 0;
+  }
+  header .container .links ul li {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--main-color);
+    filter: drop-shadow(0 0 15px var(--main-color));
+    transition: var(--main-transation);
+  }
+  header .container .links ul li:hover {
+    background-color: var(--main-color);
+  }
+  header .container label input:checked ~ .links {
+    left: 0;
+  }
+  header form {
+    order: 6;
+  }
+}
+@media (max-width: 767px) {
+  header form {
+    display: none;
+  }
+}
+/* 
 header .container {
   display: flex;
   justify-content: space-between;
@@ -158,7 +301,7 @@ header .container form input {
     justify-content: center;
     align-items: center;
   }
-}
+} */
 /* End Header */
 /* Start Contact */
 .Contact {

@@ -12,9 +12,11 @@
 :root {
   --main-color: #3057f4;
   --secondery-color-of-text: #2b822e;
-  --section-background: #041452;
+  --white-color: white;
   --main-transation: 0.5s;
-  --main-padding: 50px 0;
+  --main-padding: 50px;
+  --main-margin: 20px;
+  --main-font-size: 20px;
 }
 body {
   background-color: rgb(43 43 43 / 10%);
@@ -24,6 +26,16 @@ body {
 }
 html {
   scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f8f8f8;
+  box-shadow: 0 0 80px #ddd inset;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
 }
 /* Start Madia */
 @media (min-width: 768px) {
@@ -48,22 +60,22 @@ html {
 header {
   height: fit-content;
   width: 100%;
-  background-color: white;
+  background-color: var(--white-color);
   box-shadow: rgb(43 43 43 / 10%) 0px 2px;
   position: fixed;
   z-index: 999999999999999;
-  padding: 10px 0;
+  padding: calc(var(--main-padding) - 40px) 0;
 }
 header .container {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: calc(var(--main-padding) - 40px) 0;
 }
-header .container label input,
-header .container label ion-icon {
+header .container > input,
+header .container  ion-icon {
   display: none;
 }
-header .container > label {
+header .container  .links {
   flex-basis: 55%;
 }
 header .container .logo {
@@ -71,19 +83,17 @@ header .container .logo {
   align-items: center;
 }
 header .container .logo i {
-  font-size: 25px;
+  font-size: calc(var(--main-font-size) + 5px);
   color: var(--main-color);
+  margin-right: calc(var(--main-margin) - 10px);
 }
 header .container .logo h3 {
   color: black;
-  font-size: 30px;
+  font-size: calc(var(--main-font-size) + 10px);
 }
 header .container .logo p {
-  font-size: 12px;
+  font-size: calc(var(--main-font-size) - 8px);
   color: black;
-}
-header .container .links {
-  height: 100%;
 }
 header .container .links ul {
   display: flex;
@@ -98,18 +108,18 @@ header .container .links ul li a {
   position: relative;
 }
 header .container .links ul li a:hover {
-  color: var(--section-background);
+  color: #041452;
 }
 header .container .links ul li a::after {
   content: "";
   width: 0;
   height: 4px;
-  background-color: white;
+  background-color: var(--white-color);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   bottom: -10px;
-  transition: 0.5s;
+  transition:var(--main-transation);
 }
 header .container .links ul li a:hover::after {
   width: calc(100% + 10px);
@@ -119,16 +129,16 @@ header form {
   align-items: center;
 }
 header form label {
-  margin-right: 20px;
+  margin-right: var(--main-margin);
   font-weight: normal;
-  font-size: 20px;
+  font-size: var(--main-font-size);
 }
 header form input {
   background-color: var(--main-color);
-  color: white;
-  font-size: 20px;
+  color: var(--white-color);
+  font-size: var(--main-font-size);
   font-weight: bolder;
-  padding: 10px;
+  padding: calc(var(--main-padding) - 40px);
   border: none;
   cursor: pointer;
   border-radius: 7px;
@@ -136,24 +146,25 @@ header form input {
 
 @media (max-width: 991px) {
   header .container .logo {
-    padding-left: 20px;
+    padding-left: calc(var(--main-padding) - 30px);
   }
-  header .container label input,
-  header .container label ion-icon {
+  header .container  input,
+  header .container  ion-icon {
     display: block;
-    padding-right: 20px;
+    padding-right: calc(var(--main-padding) - 30px);
   }
-  header .container label ion-icon {
-    font-size: 45px;
+  header .container  ion-icon {
+    font-size: calc(var(--main-font-size) + 25px);
     color: black;
     cursor: pointer;
   }
-  header .container > label {
+  header .container > .links {
     flex-basis: initial;
     order: 7;
   }
-  header .container label input {
+  header .container > input {
     appearance: none;
+    display:  none;
   }
   header .container .links {
     position: absolute;
@@ -166,18 +177,18 @@ header form input {
     z-index: 99999999999;
   }
   header .container .links ul li a {
-    color: white;
+    color: var(--white-color);
   }
   header .container .links ul {
     flex-direction: column;
     text-align: center;
     justify-content: initial;
-    padding: 50px 0;
+    padding: var(--main-padding) 0;
   }
   header .container .links ul li {
-    margin-bottom: 10px;
+    margin-bottom: calc(var(--main-margin) - 10px);
     width: 100%;
-    padding: 10px 0;
+    padding: calc(var(--main-padding) - 40px) 0;
     background-color: var(--main-color);
     filter: drop-shadow(0 0 15px var(--main-color));
     transition: var(--main-transation);
@@ -185,7 +196,7 @@ header form input {
   header .container .links ul li:hover {
     background-color: var(--main-color);
   }
-  header .container label input:checked ~ .links {
+  header .container input:checked ~ .links {
     left: 0;
   }
   header form {
@@ -197,115 +208,10 @@ header form input {
     display: none;
   }
 }
-/* 
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-header .container .logo {
-  flex-basis: 18%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-}
-header .container .logo i {
-  font-size: 25px;
-  color: var(--main-color);
-}
-header .container .logo h3 {
-  color: black;
-  font-size: 30px;
-}
-header .container .list {
-  flex-basis: 55%;
-}
-header .container .list ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 70%;
-}
-header .container .list ul li {
-  width: 100%;
-}
-header .container .list ul li a {
-  font-weight: bolder;
-  color: black;
-  transition: var(--main-transation);
-}
-header .container .list ul li:hover a {
-  margin-left: 10px;
-  color: var(--main-color);
-}
-header .container form {
-  flex-basis: 22%;
-}
-header .container form label {
-  margin-right: 20px;
-  font-weight: normal;
-  font-size: 20px;
-}
-header .container form input {
-  background-color: var(--main-color);
-  color: white;
-  font-size: 20px;
-  font-weight: bolder;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 7px;
-}
-@media (max-width: 991px) {
-  header .container {
-    flex-wrap: wrap;
-  }
-  header .container .logo {
-    flex-basis: 100%;
-    justify-content: center;
-  }
-  header .container .logo i {
-    margin-right: 10px;
-  }
-  header .container .list {
-    flex-basis: 60%;
-  }
-}
-@media (max-width: 1199px) {
-  header .container form {
-    flex-basis: 35%;
-  }
-}
-@media (max-width: 776px) {
-  header .container .logo {
-    margin-bottom: 10px;
-  }
-  header .container .list {
-    flex-basis: 100%;
-  }
-  header .container .list ul {
-    display: flex;
-    max-width: 100%;
-    margin-bottom: 10px;
-  }
-  header .container .list ul a {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  header .container form {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-} */
 /* End Header */
 /* Start Contact */
 .Contact {
-  padding: 100px 0 50px 0;
+  padding: calc(var(--main-padding) + var(--main-padding)) 0 50px 0;
 }
 .Contact .container {
   text-align: center;
@@ -313,49 +219,48 @@ header .container form input {
 .Contact .container > h4 {
   background-color: #d9f2da;
   width: fit-content;
-  padding: 10px;
-  margin: 10px auto;
-  margin-bottom: 30px;
+  padding: calc(var(--main-padding) - 40px);
+  margin: 10px auto 30px auto;
 }
 .Contact .container > h4 span {
-  background-color: #2b822e;
-  padding: 2px 10px;
-  color: white;
+  background-color: var(--secondery-color-of-text);
+  padding: 2px calc(var(--main-padding) - 40px);
+  color: var(--white-color);
   margin-right: 5px;
   border-radius: 5px;
 }
 .Contact .container > h4 a {
-  color: #2b822e;
+  color: var(--secondery-color-of-text);
 }
 .Contact .container .text h2 {
-  font-size: 55px;
-  margin-bottom: 20px;
+  font-size: calc(var(--main-font-size) + 35px);
+  margin-bottom: var(--main-margin);
 }
 .Contact .container .text p {
-  font-size: 25px;
+  font-size: calc(var(--main-font-size) + 5px);
   font-weight: bold;
   color: #0000008c;
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
 }
 @media (max-width: 776px) {
   .Contact {
-    padding-top: 150px;
+    padding-top:150px;
   }
   .Contact .container .text h2 {
-    font-size: 40px;
+    font-size: calc(var(--main-font-size) + 20px);
   }
   .Contact .container .text p {
-    font-size: 20px;
+    font-size: var(--main-font-size);
   }
 }
 .Contact .container button,
 .Results .container button {
   background-color: var(--main-color);
-  padding: 10px 20px;
+  padding: calc(var(--main-padding) - 40px) calc(var(--main-padding) - 30px);
   border: none;
   transition: var(--main-transation);
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
 }
 .Contact .container button:hover,
 .Results .container button:hover {
@@ -363,8 +268,8 @@ header .container form input {
 }
 .Contact .container button a,
 .Results .container button a {
-  color: white;
-  font-size: 20px;
+  color: var(--white-color);
+  font-size: var(--main-font-size);
   font-weight: bolder;
 }
 .Contact .container > p {
@@ -372,46 +277,53 @@ header .container form input {
 }
 /* End Contact */
 /* Start Section */
-.Section {
-  padding: 50px 0;
+.Resources {
+  padding: var(--main-padding) 0;
 }
-.Section .container .imge {
+.Resources .container .imge {
   max-width: 100%;
   max-height: 100%;
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
 }
-.Section .container img {
+.Resources .container img {
   max-width: 100%;
   max-height: 100%;
 }
-.Section .container {
+.Resources .container {
   text-align: center;
   color: var(--secondery-color-of-text);
   font-weight: bolder;
 }
+.Resources .container p {
+  margin: calc(var(--main-margin) - 10px) 0;
+}
 /* End Section */
 /* Strat performance  */
 .performance {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0;
 }
 .performance .container .text {
   text-align: center;
   max-width: 60%;
-  margin: 10px auto;
+  margin: calc(var(--main-margin) - 10px) auto;
+}
+.performance .container .text h2 {
+  font-size: calc(var(--main-font-size) + 20px);
+  margin-bottom: var(--main-margin);
+  line-height: 1;
 }
 @media (max-width: 776px) {
   .performance .container .text {
     max-width: 100%;
   }
-}
-.performance .container .text h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-  line-height: 1;
+  .performance .container .text h2 {
+    font-size: calc(var(--main-font-size) + 5px);
+    line-height: 1.6;
+  }
 }
 .performance .container .text p {
   line-height: 1.6;
-  font-size: 20px;
+  font-size: var(--main-font-size);
 }
 .performance .container .Parent-Of-Boxs {
   display: grid;
@@ -420,20 +332,20 @@ header .container form input {
 }
 .performance .container .Parent-Of-Boxs .box {
   background-color: rgb(247, 247, 247);
-  padding: 30px;
+  padding: calc(var(--main-padding) - 20px);
 }
 .performance .container .Parent-Of-Boxs .box i {
-  font-size: 25px;
+  font-size: calc(var(--main-font-size) + 5px);
   margin-bottom: 20px;
 }
 .performance .container .Parent-Of-Boxs .box h3 {
-  font-size: 25px;
+  font-size: calc(var(--main-font-size) + 5px);
   font-weight: bolder;
-  margin-bottom: 15px;
+  margin-bottom: calc(var(--main-margin) - 5px);
 }
 .performance .container .Parent-Of-Boxs .box p {
   font-weight: bold;
-  font-size: 17px;
+  font-size: calc(var(--main-font-size) - 3px);
 }
 .performance .container .Parent-Of-Boxs .box:first-child i {
   color: var(--main-color);
@@ -456,20 +368,20 @@ header .container form input {
 /* End performance  */
 /* Start Speed */
 .Speed {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0;
 }
 .Speed .container .text {
   text-align: center;
   max-width: 55%;
-  margin: 10px auto 40px auto;
+  margin: calc(var(--main-margin) - 10px) auto calc(var(--main-margin) + 20px) auto;
 }
 .Speed .container .text h2 {
-  font-size: 40px;
+  font-size: calc(var(--main-font-size) + 20px);
   font-weight: bolder;
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
 }
 .Speed .container .text p {
-  font-size: 18px;
+  font-size: calc(var(--main-font-size) - 2px);
 }
 .Speed .container .Parent-Of-Boxs {
   display: flex;
@@ -487,16 +399,16 @@ header .container form input {
 }
 .Speed .container .Parent-Of-Boxs .box:first-child p {
   color: var(--secondery-color-of-text);
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
 }
 .Speed .container .Parent-Of-Boxs .box:first-child h2 {
-  font-size: 35px;
-  margin-bottom: 30px;
+  font-size: calc(var(--main-font-size) + 15px);
+  margin-bottom: calc(var(--main-margin) + 10px);
 }
-.Speed .container .Parent-Of-Boxs .box:first-child h6 {
-  font-size: 20px;
+.Speed .container .Parent-Of-Boxs .box:first-child h3 {
+  font-size: var(--main-font-size);
   line-height: 1.6;
-  margin-bottom: 30px;
+  margin-bottom: calc(var(--main-margin) + 10px);
   font-weight: normal;
 }
 .Speed .container .Parent-Of-Boxs .box:last-child {
@@ -523,7 +435,7 @@ header .container form input {
     max-width: 100%;
   }
   .Speed .container .text h2 {
-    font-size: 35px;
+    font-size: calc(var(--main-font-size) + 15px);
   }
 }
 /* End Speed */
@@ -531,7 +443,7 @@ header .container form input {
 .Reports,
 .Theams,
 .party {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0;
 }
 .Reports .container,
 .Theams .container,
@@ -567,13 +479,13 @@ header .container form input {
 .Theams .container .text .contact-of-text p:first-child,
 .party .container .text .contact-of-text p:first-child {
   color: var(--secondery-color-of-text);
-  margin-bottom: 15px;
+  margin-bottom: calc(var(--main-margin) - 5px);
 }
 .Reports .container .text .contact-of-text h3,
 .Theams .container .text .contact-of-text h3,
 .party .container .text .contact-of-text h3 {
-  font-size: 35px;
-  margin-bottom: 15px;
+  font-size: calc(var(--main-font-size) + 15px);
+  margin-bottom: calc(var(--main-margin) - 5px);
 }
 .Reports .container .text .contact-of-text p:last-child,
 .Theams .container .text .contact-of-text p:last-child,
@@ -597,7 +509,7 @@ header .container form input {
     flex-basis: 100%;
     text-align: center;
     order: -1;
-    margin-bottom: 50px;
+    margin-bottom: calc(var(--main-margin) + 30px);
   }
   .Reports .container .text .contact-of-text,
   .Theams .container .text .contact-of-text,
@@ -608,12 +520,12 @@ header .container form input {
 /* End Reports */
 /* Start people */
 .people {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0;
 }
 .people > h2 {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 35px;
+  margin-bottom: calc(var(--main-margin) + 10px);
+  font-size: calc(var(--main-font-size) + 15px);
 }
 .people .container {
   display: grid;
@@ -622,7 +534,7 @@ header .container form input {
 }
 .people .container .box {
   background-color: rgb(247, 247, 247);
-  padding: 30px;
+  padding: calc(var(--main-padding) - 20px);
   text-align: center;
   padding-bottom: 0;
 }
@@ -631,33 +543,32 @@ header .container form input {
   height: 90px;
   border-radius: 50%;
   border: 3px solid var(--secondery-color-of-text);
-  margin-bottom: 10px;
+  margin-bottom: calc(var(--main-margin) - 10px);
 }
 .people .container .box .text img {
   max-width: 100%;
 }
 .people .container .box .text q {
-  font-size: 22px;
+  font-size: calc(var(--main-font-size) + 2px);
   font-weight: bolder;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
   line-height: 1.6;
 }
 .people .container .box .text p {
-  font-size: 18px;
+  font-size: calc(var(--main-font-size) - 2px);
   font-weight: bold;
-  margin: 10px auto;
-  margin-bottom: 20px;
+  margin: calc(var(--main-margin) - 10px) auto var(--main-margin) auto;
   max-width: 60%;
 }
 /* End people */
 /* Start monitoring  */
 .monitoring {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0;
 }
 .monitoring .container h1 {
   text-align: center;
-  font-size: 45px;
+  font-size: calc(var(--main-font-size) + 25px);
   font-weight: bolder;
   max-width: 60%;
   margin: 10px auto 20px auto;
@@ -666,9 +577,9 @@ header .container form input {
   max-width: 60%;
 }
 .monitoring .container .text p {
-  margin-bottom: 20px;
+  margin-bottom: var(--main-margin);
   line-height: 1.5;
-  font-size: 20px;
+  font-size: var(--main-font-size);
 }
 .monitoring .container .imge {
   display: flex;
@@ -678,7 +589,7 @@ header .container form input {
   height: 90px;
   border-radius: 50%;
   border: 3px solid var(--secondery-color-of-text);
-  margin-right: 20px;
+  margin-right: var(--main-margin);
 }
 .monitoring .container .imge .text-1 img {
   width: 200px;
@@ -689,7 +600,7 @@ header .container form input {
     text-align: center;
   }
   .monitoring .container h1 {
-    font-size: 30px;
+    font-size: calc(var(--main-font-size) + 10px);
     max-width: 100%;
   }
   .monitoring .container .text {
@@ -699,7 +610,7 @@ header .container form input {
 /* End monitoring  */
 /* Start Results */
 .Results {
-  padding: var(--main-padding);
+  padding: var(--main-padding) 0 ;
   background-color: rgb(217, 242, 218);
 }
 .Results .container {
@@ -707,15 +618,15 @@ header .container form input {
 }
 .Results .container .text {
   max-width: 40%;
-  margin: 10px auto;
+  margin: calc(var(--main-margin) - 10px) auto;
 }
 .Results .container .text h2 {
-  font-size: 35px;
-  margin-bottom: 30px;
+  font-size: calc(var(--main-font-size) + 15px);
+  margin-bottom: calc(var(--main-margin) + 10px);
 }
 .Results .container .text p {
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: var(--main-font-size);
+  margin-bottom: calc(var(--main-margin) + 10px);
 }
 @media (max-width: 767px) {
   .Results .container .text {
@@ -725,18 +636,17 @@ header .container form input {
 /* End Results */
 /* Start Tools */
 .Tools {
-  padding: 50px 100px;
+  padding: var(--main-padding) calc(var(--main-padding) + var(--main-padding));
   background-color: rgb(4, 20, 82);
 }
 .Tools > h2 {
-  color: white;
-  font-size: 40px;
-  margin-left: 15px;
-  margin-bottom: 50px;
+  color: var(--white-color);
+  font-size: calc(var(--main-font-size) + 20px);
+  margin: 0 0 calc(var(--main-margin) + 30px) calc(var(--main-margin) - 5px);
 }
 .Tools > i {
-  font-size: 20px;
-  margin-bottom: 50px;
+  font-size: var(--main-font-size);
+  margin-bottom: calc(var(--main-margin) + 30px);
 }
 .Tools i {
   color: var(--main-color);
@@ -746,15 +656,15 @@ header .container form input {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 40px;
 }
-.Tools .parent-of-boxs .box h6 {
+.Tools .parent-of-boxs .box h2 {
   color: var(--secondery-color-of-text);
-  font-size: 15px;
-  margin-bottom: 15px;
+  font-size: calc(var(--main-font-size) + 5px);
+  margin-bottom: calc(var(--main-margin) - 5px);
 }
 .Tools .parent-of-boxs .box:first-child span,
 .Tools .parent-of-boxs .box:nth-child(3) span {
   background-color: var(--secondery-color-of-text);
-  color: white;
+  color: var(--white-color);
   font-weight: bolder;
   padding: 2px 5px;
   border-radius: 5px;
@@ -770,26 +680,25 @@ header .container form input {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  margin-right: 10px;
-  margin-top: 5px;
+  margin: 5px calc(var(--main-margin) - 10px) 0 0 ;
 }
 .Tools .parent-of-boxs .box .list li a {
-  font-size: 16px;
+  font-size: calc(var(--main-font-size) - 4px);
   display: block;
   color: rgb(207, 216, 252);
-  margin-bottom: 10px;
+  margin-bottom: calc(var(--main-margin) - 10px);
   transition: var(--main-transation);
   font-weight: normal;
   width: fit-content;
 }
 .Tools .parent-of-boxs .box .list li a:hover {
   text-decoration: underline;
-  color: white;
+  color: var(--white-color);
 }
 @media (max-width: 991px) {
   .Tools {
     text-align: center;
-    padding: 20px;
+    padding: calc(var(--main-padding) - 30px);
   }
   .Tools .parent-of-boxs .box .list li a {
     width: 100%;
@@ -801,27 +710,31 @@ header .container form input {
 /* End Tools */
 /* Start Footer */
 footer {
-  padding: 30px 0;
+  padding: calc(var(--main-padding) - 20px) 0;
   background-color: #cfd8fc;
 }
 footer .container {
   display: flex;
+  align-items: center;
 }
 footer .container .icone {
   display: flex;
-  margin-right: 50px;
+  margin-right: calc(var(--main-margin) + 30px);
+}
+footer .container .icone a {
+  font-size: 0px;
 }
 footer .container .icone i {
-  margin-left: 30px;
+  margin-left: calc(var(--main-margin) + 10px);
   color: #041452;
   transition: var(--main-transation);
-  font-size: 25px;
+  font-size: calc(var(--main-font-size) + 5px);
 }
 footer .container .icone i:hover {
   color: var(--main-color);
 }
 footer .container p {
-  font-size: 18px;
+  font-size: calc(var(--main-font-size) - 2px);
   word-spacing: 2px;
 }
 footer .container span {
@@ -835,7 +748,7 @@ footer .container span {
   footer .container .icone {
     flex-basis: 100%;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--main-margin);
   }
   footer .container p {
     flex-basis: 100%;
